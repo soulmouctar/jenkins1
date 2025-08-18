@@ -7,8 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Check npm') {
+            steps { sh 'npm -v' }
+        }
         
-        stage('Deploy') {
+        stage('build') {
             steps {
                 sh 'npm -v'
             }
