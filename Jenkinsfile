@@ -7,7 +7,7 @@ pipeline {
 
     stages {
         
-        stage('Deploy') {
+        stage('build') {
             steps {
                 sh 'npm -v'
             }
@@ -20,9 +20,6 @@ pipeline {
         }
         success {
             echo 'Pipeline succeeded.'
-        }
-        failure {
-            echo 'Pipeline failed.'
         }
     }
 }
