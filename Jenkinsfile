@@ -1,9 +1,9 @@
 pipeline {
-    agent any
-
-    environment {
-        MY_VAR = 'my_value'
-        MY_NUMBER = 42
+    agent {
+        docker {
+            image 'node:24-alpine3.21'
+            args '-u root:root'
+        }
     }
 
     stages {
@@ -12,6 +12,18 @@ pipeline {
             steps {
                 sh 'npm -v'
             }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Pipeline succeeded.'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
