@@ -2,12 +2,13 @@ pipeline {
     agent {
         docker {
             image 'node:21-alpine'
+            args '-u root:root'
         }
     }
 
     stages {
         
-        stage('build') {
+        stage('Deploy') {
             steps {
                 sh 'npm -v'
             }
@@ -20,6 +21,9 @@ pipeline {
         }
         success {
             echo 'Pipeline succeeded.'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
