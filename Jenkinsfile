@@ -14,7 +14,7 @@ pipeline {
     stages {
         // stage('Check npm') {
         //     steps { sh 'npm -v' }
-        }
+        // }
         
         stage('build') {
             steps {
