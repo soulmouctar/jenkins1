@@ -21,6 +21,22 @@ pipeline {
                 echo 'Hello World'
             }
         }
+
+         stage('deployment production') {
+            input {
+                message "Vous voulez vraiment déployer?"
+                ok "Yes, let's do it!"
+                submitter "admin, soulmouctardev"
+                submitterParameter "USER_SUBMIT"
+                parameters{
+                    string(name: 'VERSION', defaultValue: 'latest', description: 'Une version')
+                }
+            }
+            steps {
+                echo 'user ${USER_SUBMIT} has submitted'
+                echo "deploiement de la version ${VERSION}"
+            }
+        }
     }
 
     // post {
