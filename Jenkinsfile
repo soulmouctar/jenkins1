@@ -1,23 +1,24 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:21-alpine'
-            args '-u root:root'
-        }
-    }
+    agent any
+    // agent {
+    //     docker {
+    //         image 'node:21-alpine'
+    //         args '-u root:root'
+    //     }
+    // }
 
     triggers {
         cron('* * * * *')
     }
 
     stages {
-        stage('Check npm') {
-            steps { sh 'npm -v' }
+        // stage('Check npm') {
+        //     steps { sh 'npm -v' }
         }
         
         stage('build') {
             steps {
-                sh 'npm -v'
+                echo 'Hello World'
             }
         }
     }
