@@ -6,6 +6,10 @@ pipeline {
         }
     }
 
+    triggers {
+        cron('* * * * *')
+    }
+
     stages {
         stage('Check npm') {
             steps { sh 'npm -v' }
@@ -18,15 +22,15 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            echo 'Pipeline completed.'
-        }
-        success {
-            echo 'Pipeline succeeded.'
-        }
-        failure {
-            echo 'Pipeline failed.'
-        }
-    }
+    // post {
+    //     always {
+    //         echo 'Pipeline completed.'
+    //     }
+    //     success {
+    //         echo 'Pipeline succeeded.'
+    //     }
+    //     failure {
+    //         echo 'Pipeline failed.'
+    //     }
+    // }
 }
